@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        height: 100vh;
+        width: 100vw;
+        display: grid;
+        place-content: center;
+        background-color: #252525;
+    }
+    .notes {
+        width: 700px;
+        max-width: 700px;
+        min-width: 400px;
+        height: 95vh;
+        border-radius: 20px;
+        position: relative;
+    }
+    .notes img {
+        position: absolute;
+        top: -20px;
+        right: -15px;
+        width: 50px;
+        transform: rotate(-20deg);
+    }
+    textarea {
+        border: none;
+        border-radius: 20px;
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        font-size: 17px;
+        font-family: system-ui;
+        resize: none;
+    }
+    textarea:focus{
+        outline: none;
+    }
+    .mode {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: fit-content;
+        padding: 5px 20px;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <div class="notes" id="notes">
+        <textarea name="note" id="note"></textarea>
+        <img src="./nerd.png" alt="nerd">
+    </div>
+    <button class="mode">Dark</button>
+</body>
+<script>
+
+    const btnMode = document.querySelector(".mode");
+    const body = document.querySelector("body");
+    const textarea = document.querySelector("textarea");
+    let mode = true;
+
+    btnMode.addEventListener('click', () => {
+
+        console.log( mode );
+
+        if ( mode ) {
+            // LIGHT MODE
+            btnMode.style.background = "#252525";
+            btnMode.style.color = "white";
+            btnMode.textContent = "Light";
+
+            body.style.background = "#121212";
+            textarea.style.backgroundColor = "#252525";
+            textarea.style.color = "white";
+        }
+        else {
+            btnMode.style.background = "white";
+            btnMode.style.color = "black";
+            btnMode.textContent = "Dark";
+            
+            body.style.backgroundColor = "#252525";
+            textarea.style.background = "white";
+            textarea.style.color = "black";
+        }
+
+        mode = !mode;
+
+    });
+
+</script>
+</html>
